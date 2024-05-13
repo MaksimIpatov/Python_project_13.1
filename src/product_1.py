@@ -11,19 +11,31 @@ class Product:
         self.description = description
         self.__price = price
         self.quantity_in_stock = quantity_in_stock
+
     @classmethod
-    def create_product(cls, prod_str):
-        title, description, price = prod_str.split('-')
-        return cls(title, description, price)
+    def create_product(cls, prod_dict):
+        title = prod_dict ['name']
+        description = prod_dict ['description']
+        price = prod_dict ['price']
+        quantity_in_stock = prod_dict ['quantity']
+        return cls(title, description, price, quantity_in_stock)
+
     @property
-    def __price(self):
+    def price(self):
         """Геттер для получения цены"""
         return self.__price
     @price.setter
-    def __price(self, value):
-        """Сеттер для изменения цены"""
+    def price(self, value):
+        """Сеттер для проверки цены"""
         price = value
-        self.price = price
+        if price <= 0:
+            print('Цена введена некорректная')
+            return self.__price
+        self.__price = price
+
+
+
+
 
 
 

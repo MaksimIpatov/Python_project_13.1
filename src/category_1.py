@@ -1,5 +1,3 @@
-# импорт Product не работает
-from src.product_1 import Product
 
 
 class Category:
@@ -10,21 +8,26 @@ class Category:
     number_categories: int
     unique_products: int
 
-    def __init__(self, title, description, products, number_categories, unique_products):
+    number_categories = 0
+    unique_products = 0
+
+
+    def __init__(self, title, description, products):
         """Инициализация экземпляров класса Category"""
         self.title = title
         self.description = description
         self.__products = products
-        self.number_categories = number_categories
-        self.unique_products = unique_products
+        Category.number_categories += 1
+        Category.unique_products += len(products)
+
 
     def add_product(self, new_product):
-        self.__products.append(new_product)
+        self.products.append(new_product)
     @property
-    def get_product(self):
-        return(f"Продукт, int({self.price}) руб. Остаток: {self.quantity_in_stock} шт")
-
-
-
-
+    def products(self):
+        return_products = []
+        for i in self.__products:
+            product = f'{i.title}, {i.price} руб. Остаток: {i.quantity_in_stock} шт.'
+            return_products.append(product)
+        return return_products
 
