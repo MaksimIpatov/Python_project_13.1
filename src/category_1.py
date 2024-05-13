@@ -1,5 +1,5 @@
 # импорт Product не работает
-from src.Product_1 import Product
+from src.product_1 import Product
 
 
 class Category:
