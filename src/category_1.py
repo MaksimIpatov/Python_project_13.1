@@ -21,9 +21,8 @@ class Category:
     def add_product(self, new_product):
         self.__products.append(new_product)
     @property
-    def get_product(self, product):
-        for i in product:
-            print(f"Продукт, int({self.price}) руб. Остаток: {self.quantity_in_stock} шт")
+    def get_product(self):
+        return(f"Продукт, int({self.price}) руб. Остаток: {self.quantity_in_stock} шт")
 
 
 
